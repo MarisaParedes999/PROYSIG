@@ -76,3 +76,8 @@ var lbuffer2 = new L.geoJson(buffer_puntos200, {
     collapsed: false // true
 }).addTo(mapab);
 
+//ver mapa en pantalla completa
+function fullScreenviewb(){
+    mapabuffer.requestFullscreen();
+}
+
