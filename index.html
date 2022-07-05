@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--LEAFLET CSS S-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+    <!--leaflet routing-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+    <!--LEAFLET MAKERS-->
+    <link rel="stylesheet" href="css/leaflet.extra-markers.min.css">
+    <!--PLUGING PARA ENCONTRAR LA UBICACION ACTUAL-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.4/dist/L.Control.Locate.min.css" />
+    <!--CSS DEL MAPA -->
+    <link rel="stylesheet" type="text/css" href="mapa.css">
+    <!--MINI MAP PLUGING-->
+    <link rel="stylesheet" type="text/css" href="Leaflet-MiniMap-master/dist/Control.MiniMap.min.css">
+
+    <title>EMAO</title>
+
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+
+    <select name="select-location" id="select-location"  style="display: none;">
+        <option value="-1">Seleccione su Zona </option>
+    </select>
+</head>
+<body id="page-top">
+    <!-- BARRA DE NAVEGACION-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top"><img src="assets/img/emao.png"  alt="..." /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars ms-1"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#services">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Comunicados</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Puntos Reciclaje</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">Rutas</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- ENCABEZADO DE BIENVENIDA-->
+    <header class="masthead">
+        <div class="container">
+            <div class="masthead-subheading">Aqui te brindaremos informacion sobre nosotros. </div>
+            <div class="masthead-heading text-uppercase">Bienvenido</div>
+            <a class="btn btn-primary btn-xl text-uppercase" href="#services">Conocer Mas</a>
+        </div>
+    </header>
+    <!-- SERVICIOS-->
+    <section class="page-section" id="services">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Servicios</h2>
+                <h3 class="section-subheading text-muted">La Empresa Municipal de Aseo de Oruro, se constituye en el pilar de la limpieza en el municipio de Oruro, haciendo diariamente el recojo de los residuos sólidos de todos los hogares, centros de salud y otros en nuestra querida ciudad.</h3>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fas fa-truck fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="my-3">Recojo de Basura</h4>
+                    <p class="text-muted">Realizamos el recojo de basura por medio de rutas planificadas, conprendemos varias zonas para que los vecinos se apersonen al carro recolector.</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fas fa-bottle-water fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="my-3">Reciclaje</h4>
+                    <p class="text-muted">Realizamos el recojo de botellas de plastico, tapitas de plastico y metal. Tenemos puntos de contenedores distribuidos en la ciudad de Oruro.</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fas fa-heart fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="my-3">Concientizacion</h4>
+                    <p class="text-muted">Llevamos a la cocientizacion con diversas actividades con las programasdas faenas de limpieza, actividades de limpieza con los vecinos para las calles de la ciudad de Oruro.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- COMUNICADOS-->
+    <section class="page-section bg-light" id="portfolio">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">COMUNICADOS</h2>
+                <h3 class="section-subheading text-muted">Informacion sobre actividades de la empresa</h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 mb-4">
+                    <!-- Portfolio item 1-->
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading">13/06/2022</div>
+                            <div class="portfolio-caption-subheading text-muted">COMUNICADO</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 mb-4">
+                    <!-- Portfolio item 2-->
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio/2.jpg" alt="..." />
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading">25/06/2022</div>
+                            <div class="portfolio-caption-subheading text-muted">SALUTACION</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 mb-4">
+                    <!-- Portfolio item 3-->
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." />
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading">18/06/2022</div>
+                            <div class="portfolio-caption-subheading text-muted">INVITACION OFICIAL</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+                    <!-- Portfolio item 4-->
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio/4.jpg" alt="..." />
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading">4/06/2022</div>
+                            <div class="portfolio-caption-subheading text-muted">COMUNICADO</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
+                    <!-- Portfolio item 5-->
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio/5.jpg" alt="..." />
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading">29/05/2022</div>
+                            <div class="portfolio-caption-subheading text-muted">COMUNICADO</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <!-- Portfolio item 6-->
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio/6.jpg" alt="..." />
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading">27/05/2022</div>
+                            <div class="portfolio-caption-subheading text-muted">INVITACION</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- PUNTOS DE RECICLAJE-->
+    <section class="page-section" id="about">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">PUNTOS DE RECICLAJE</h2>
+                <h3 class="section-subheading text-muted">En los canastillos que estan ubicados en los puntos, puedes dejar tus botellas de plastico, tapitas y envases metalicos.</h3>
+                <h3 class="section-subheading text-muted">Puedes activar tu ubicacion y asi ver el punto mas cercano y la ruta sugerida.</h3>
+            </div>
+            <div id="map"></div>
+            
+            <div class="container align-items-center" style="padding: 30px; position: relative;">
+                <button type="button" class="btn btn-success" onclick=fullScreenview()>Ampliar Mapa de Puntos de Recoleccion</button>
+            </div>
+        </div>
+    </section>
+    <!-- RUTAS / RECORRIDOS-->
+    <section class="page-section bg-light" id="team">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">RECORRIDOS DEL CARRO RECOLECTOR</h2>
+                <h3 class="section-subheading text-muted">Selecciona tu zona para conocer las rutas.</h3>
+                <h3 class="section-subheading text-muted">Puedes activar tu ubicacion para conocer la ruta mas cercana.</h3>
+            </div>
+            <div class="container">
+                <div id="maparutas"></div>
+                
+                <div class="container align-items-center" style="padding: 30px; position: relative;">
+                    <button type="button" class="btn btn-success" onclick=fullScreenviewr()>Ampliar Mapa de Rutas</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center"><p class="large text-muted"></p></div>
+            </div>
+            <div class="text-center">
+                <h3 class="section-subheading text-muted">Este es nuestro alcance en la ciudad de Oruro, estamos trabajando por llegar a mas lugares por una ciudad limpia y un mejor futuro.</h3>            </div>
+            <div class="container">
+                <div id="mapabuffer"></div>
+                <div class="container align-items-center" style="padding: 30px; position: relative;">
+                    <button type="button" class="btn btn-success" onclick=fullScreenviewr()>Ampliar Mapa de Rutas</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="padding-top: 30px;">
+            <div class="text-center">
+            </div>
+            <div class="container">
+                
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center"><p class="large text-muted"></p></div>
+            </div>
+        </div>
+    </section>
+
+    
+
+   
+    <!-- Footer-->
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-lg-start">Copyright &copy; EMAO 2022</div>
+                <div class="col-lg-4 my-3 my-lg-0">
+                    <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/emaodeoruro" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/emaodeoruro" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/emaodeoruro" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a class="link-dark text-decoration-none me-3" href="#!">SISTEMAS DE INFORMACION GEOGRAFICA</a>
+                    <a class="link-dark text-decoration-none" href="#!">1/2022</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- COMUNICADO MODALES-->
+    <!-- COMUNICADO 1-->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="modal-body">
+
+                                <h2 class="text-uppercase">13/06/2022</h2>
+                                <p class="item-intro text-muted">COMUNICADO.</p>
+                                <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/1.jpg" alt="..." />
+                                
+                                <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                    <i class="fas fa-xmark me-1"></i>
+                                    CERRAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- COMUNICADO 2-->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">25/06/2022</h2>
+                                <p class="item-intro text-muted">SALUTACION</p>
+                                <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2.jpg" alt="..." />
+                                
+                                <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                    <i class="fas fa-xmark me-1"></i>
+                                    CERRAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- COMUNICADO 3-->
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">18/06/2022</h2>
+                                <p class="item-intro text-muted">INVITACION OFICIAL</p>
+                                <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/3.jpg" alt="..." />
+                                
+                                <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                    <i class="fas fa-xmark me-1"></i>
+                                    CERRAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- COMUNICADO 4-->
+    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">04/06/2022</h2>
+                                <p class="item-intro text-muted">COMUNICADO</p>
+                                <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/4.jpg" alt="..." />
+                                
+                                <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                    <i class="fas fa-xmark me-1"></i>
+                                    CERRAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- COMUNICADO 5-->
+    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">29/05/2022</h2>
+                                <p class="item-intro text-muted">COMUNICADO.</p>
+                                <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/5.jpg" alt="..." />
+                                
+                                <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                    <i class="fas fa-xmark me-1"></i>
+                                    CERRAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--COMUNICADO 6-->
+    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">27/05/2022</h2>
+                                <p class="item-intro text-muted">INVITACION</p>
+                                <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/6.jpg" alt="..." />
+                                
+                                <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                    <i class="fas fa-xmark me-1"></i>
+                                    CERRAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <!---MPARA LOS MAPAS-->
+   <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+   integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+   crossorigin=""></script>
+   <!--leaflet ruteo-->
+   <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+
+   <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+   <script src="js/leaflet.geometryutil.js"></script>
+   <script src="Leaflet-MiniMap-master/dist/Control.MiniMap.min.js"></script>
+   <script src="js/leaflet.extra-markers.min.js"></script>
+
+   <script src="./lib/leaflet.browser.print.min.js"></script>
+   <script src="layers/puntos.js"></script>
+   <script src="layers/rutas.js"></script>
+   <script src="layers/rutasNorte.js"></script>
+   <script src="layers/rutasCentral.js"></script>
+   <script src="layers/rutasSud.js"></script>
+   <script src="layers/buffer_puntos100.js"></script>
+   <script src="layers/buffer_puntos200.js"></script>
+   <script src="mapa.js"></script>
+   <script src="mapar.js"></script>
+   <script src="mapab.js"></script>
+</body>
+</html>
